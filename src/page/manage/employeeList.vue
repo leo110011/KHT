@@ -1,8 +1,9 @@
 <template>
 <div>
+<!--首行搜索及添加功能-->
   <el-row >
   <el-col :span="5" :offset="16">
-    <el-input placeholder="请输入员工姓名">
+    <el-input placeholder="请输入员工姓名" v-model="searchname" prefix-icon="el-icon-search">
     <el-button icon="el-icon-search"></el-button>
     </el-input>
   </el-col>
@@ -16,10 +17,11 @@
   </el-row>
     <br></br>
 
+<!--主表格-->
   <el-table
     :data="tableData"
     stripe
-    max-height="770"
+    max-height="760"
     style="width: 100%">
     <el-table-column
       label="姓名"
@@ -69,7 +71,20 @@
       </template>
     </el-table-column>
   </el-table>
+  <br></br>
 
+<!--分页-->
+  <div>
+  <el-pagination
+    background
+    layout="prev, pager, next"
+    :hide-on-single-page="true"
+    :page-size="20"
+    :total="200">
+  </el-pagination>
+  </div>
+
+<!--弹框-->
   <el-dialog title="新增员工" :visible.sync="dialogFormVisible">
 
     <el-form ref="form" :model="form" label-width="80px">
@@ -80,48 +95,47 @@
       </el-col>
       <el-col span="12" :offset="6">
       <el-form-item label="员工密码">
-      <el-input v-model="form.name"></el-input>
+      <el-input v-model="form.pwd"></el-input>
       </el-form-item>
       </el-col>
       <el-col span="12" :offset="6">
-      <el-form-item label="身份证号码">
-      <el-input v-model="form.name"></el-input>
+      <el-form-item label="身份证">
+      <el-input v-model="form.passportID"></el-input>
       </el-form-item>
       </el-col>
       <el-col span="12" :offset="6">
       <el-form-item label="联系电话">
-      <el-input v-model="form.name"></el-input>
+      <el-input v-model="form.phonenumber"></el-input>
       </el-form-item>
       </el-col>
       <el-col span="12" :offset="6">
       <el-form-item label="联系邮箱">
-      <el-input v-model="form.name"></el-input>
+      <el-input v-model="form.e_mail"></el-input>
       </el-form-item>
       </el-col>
       <el-col span="12" :offset="6">
       <el-form-item label="联系地址">
-      <el-input v-model="form.name"></el-input>
+      <el-input v-model="form.address"></el-input>
       </el-form-item>
       </el-col>
       <el-col span="12" :offset="6">
       <el-form-item label="岗位">
-      <el-input v-model="form.name"></el-input>
+      <el-input v-model="form.station"></el-input>
       </el-form-item>
       </el-col>
       <el-col span="12" :offset="6">
       <el-form-item label="员工状态">
-      <el-input v-model="form.name"></el-input>
+      <el-input v-model="form.work_status"></el-input>
       </el-form-item>
       </el-col>
       <el-col span="12" :offset="6">
       <el-form-item label="机构编号">
-      <el-input v-model="form.name"></el-input>
+      <el-input v-model="form.orgnizeID"></el-input>
       </el-form-item>
       </el-col>
       <el-form-item label="">
       </el-form-item>
     </el-form>
-
 
     <div slot="footer" class="dialog-footer">
       <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -136,39 +150,28 @@
     data() {
       return {
         dialogFormVisible:false,
-        form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        },
+        searchname:'',
         tableData: [{
-          name: '王小虎',
+          name: '邓永豪',
           employeeID: 10086,
           station: '你爹',
           passportID: 110,
           phonenumber: 13016533423,
-          address: '上海市普陀区金沙江路 1518 弄',
-          e_mail: '10566950087@qq.com',
+          address: '人在广东已经嫖到失联',
+          e_mail: '123456789@qq.com',
           work_status: '工作中'
-        }, {
-          date: '2016-05-04',
-          name: '好小虎',
-          address: '普宁市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '小虎',
-          address: '汕头市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '死小虎',
-          address: '广州市普陀区金沙江路 1516 弄'
         }],
-        search: ''
+        form: {
+          name: '',
+          pwd: '',
+          passportID: '',
+          phonenumber: '',
+          e_mail: '',
+          address: '',
+          station: '',
+          work_status: '',
+          orgnizeID:'',
+        },
       }
     },
   }
