@@ -12,7 +12,7 @@
       size="mini"
       type="primary"
       round
-      @click="dialogFormVisible = true">新增员工</el-button>
+      @click="increase_dialogFormVisible = true">新增员工</el-button>
   </el-col>
   </el-row>
     <br></br>
@@ -62,7 +62,7 @@
         <el-button
           size="mini"
           icon="el-icon-edit"
-          @click="">修改</el-button>
+          @click="modify_dialogFormVisible = true">修改</el-button>
         <el-button
           size="mini"
           type="danger"
@@ -85,61 +85,79 @@
   </div>
 
 <!--弹框-->
-  <el-dialog title="新增员工" :visible.sync="dialogFormVisible">
+  <el-dialog title="新增员工" :visible.sync="increase_dialogFormVisible">
 
-    <el-form ref="form" :model="form" label-width="80px">
-      <el-col span="12" :offset="6">
+    <el-form class="eform" ref="form" :model="increse_form" label-width="80px">
       <el-form-item label="姓名">
-      <el-input v-model="form.name"></el-input>
+      <el-input v-model="increse_form.name"></el-input>
       </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
       <el-form-item label="员工密码">
-      <el-input v-model="form.pwd"></el-input>
+      <el-input v-model="increse_form.pwd"></el-input>
       </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
       <el-form-item label="身份证">
-      <el-input v-model="form.passportID"></el-input>
+      <el-input v-model="increse_form.passportID"></el-input>
       </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
       <el-form-item label="联系电话">
-      <el-input v-model="form.phonenumber"></el-input>
+      <el-input v-model="increse_form.phonenumber"></el-input>
       </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
       <el-form-item label="联系邮箱">
-      <el-input v-model="form.e_mail"></el-input>
+      <el-input v-model="increse_form.e_mail"></el-input>
       </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
       <el-form-item label="联系地址">
-      <el-input v-model="form.address"></el-input>
+      <el-input v-model="increse_form.address"></el-input>
       </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
       <el-form-item label="岗位">
-      <el-input v-model="form.station"></el-input>
+      <el-input v-model="increse_form.station"></el-input>
       </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
       <el-form-item label="员工状态">
-      <el-input v-model="form.work_status"></el-input>
+      <el-input v-model="increse_form.work_status"></el-input>
       </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
       <el-form-item label="机构编号">
-      <el-input v-model="form.orgnizeID"></el-input>
-      </el-form-item>
-      </el-col>
-      <el-form-item label="">
+      <el-input v-model="increse_form.orgnizeID"></el-input>
       </el-form-item>
     </el-form>
 
     <div slot="footer" class="dialog-footer">
-      <el-button @click="dialogFormVisible = false">取 消</el-button>
-      <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+      <el-button @click="increase_dialogFormVisible = false">取 消</el-button>
+      <el-button type="primary" @click="increase_dialogFormVisible = false">确 定</el-button>
+    </div>
+  </el-dialog>
+
+  <el-dialog title="修改信息" :visible.sync="modify_dialogFormVisible">
+
+    <el-form class="eform" ref="form" :model="modify_form" label-width="80px">
+      <el-form-item label="员工账号">
+      <el-input v-model="modify_form.employeeID"></el-input>
+      </el-form-item>
+      <el-form-item label="岗位">
+      <el-input v-model="modify_form.station"></el-input>
+      </el-form-item>
+      <el-form-item label="员工密码">
+      <el-input v-model="modify_form.pwd"></el-input>
+      </el-form-item>
+      <el-form-item label="姓名">
+      <el-input v-model="modify_form.name"></el-input>
+      </el-form-item>
+      <el-form-item label="身份证">
+      <el-input v-model="modify_form.passportID"></el-input>
+      </el-form-item>
+      <el-form-item label="联系电话">
+      <el-input v-model="modify_form.phonenumber"></el-input>
+      </el-form-item>
+      <el-form-item label="联系邮箱">
+      <el-input v-model="modify_form.e_mail"></el-input>
+      </el-form-item>
+      <el-form-item label="联系地址">
+      <el-input v-model="modify_form.address"></el-input>
+      </el-form-item>
+      <el-form-item label="员工状态">
+      <el-input v-model="modify_form.work_status"></el-input>
+      </el-form-item>
+    </el-form>
+
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="modify_dialogFormVisible = false">取 消</el-button>
+      <el-button type="primary" @click="modify_dialogFormVisible = false">确 定</el-button>
     </div>
   </el-dialog>
 </div>
@@ -149,7 +167,8 @@
   export default {
     data() {
       return {
-        dialogFormVisible:false,
+        increase_dialogFormVisible: false,
+        modify_dialogFormVisible: false,
         searchname:'',
         tableData: [{
           name: '邓永豪',
@@ -160,8 +179,18 @@
           address: '人在广东已经嫖到失联',
           e_mail: '123456789@qq.com',
           work_status: '工作中'
-        }],
-        form: {
+        },{
+          name: '邓adsf',
+          employeeID: 186,
+          station: '你',
+          passportID: 110,
+          phonenumber: 13016533423,
+          address: '人在广东已经嫖到失联',
+          e_mail: '123456789@qq.com',
+          work_status: '事业中'
+        },
+      ],
+        increse_form: {
           name: '',
           pwd: '',
           passportID: '',
@@ -172,11 +201,29 @@
           work_status: '',
           orgnizeID:'',
         },
+        modify_form: {
+          employeeID: 0,
+          station: '00',
+          pwd: '00',
+          name: '00',
+          passportID: '000',
+          phonenumber: '00',
+          e_mail: '000',
+          address: '0',
+          work_status: '000',
+        },
       }
     },
   }
 </script>
 
 <style scoped>
-
+.eform{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.el-form-item{
+  width: 50%;
+}
 </style>
