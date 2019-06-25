@@ -15,34 +15,42 @@
 <!--主表格-->
   <el-table
     :data="tableData"
+    :modal-append-to-body='false'
     stripe
     max-height="770"
     style="width: 100%">
     <el-table-column
+      align="center"
       label="用户ID"
       prop="userID">
     </el-table-column>
     <el-table-column
+      align="center"
       label="姓名"
       prop="name">
     </el-table-column>
     <el-table-column
+      align="center"
       label="性别"
       prop="sexual">
     </el-table-column>
     <el-table-column
+      align="center"
       label="证件类型"
       prop="passport_type">
     </el-table-column>
     <el-table-column
+      align="center"
       label="证件号码"
       prop="passportID">
     </el-table-column>
     <el-table-column
+      align="center"
       label="邮箱"
       prop="e_mail">
     </el-table-column>
     <el-table-column
+      align="center"
       label="状态"
       prop="user_status">
     </el-table-column>
@@ -62,8 +70,9 @@
 <!--分页-->
   <div>
   <el-pagination
+    style="text-align: center"
     background
-    layout="prev, pager, next"
+    layout="prev, pager, next, jumper"
     :hide-on-single-page="true"
     :page-size="20"
     :total="200">
@@ -71,7 +80,7 @@
   </div>
 
 <!--弹框-->
-  <el-dialog title="用户详情" :visible.sync="dialogFormVisible">
+  <el-dialog title="用户详情" :visible.sync="dialogFormVisible" :modal-append-to-body='false' append-to-body style="text-align: center">
 
     <el-form ref="form" :model="form" label-width="80px">
       <el-col span="12" :offset="6">
