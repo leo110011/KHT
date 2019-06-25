@@ -55,101 +55,85 @@
         <el-dialog style="text-align:left" title="审核资料填写" :visible.sync="info" width="50%" :modal-append-to-body='false'>
             <el-form> 
                 <el-row>
-                    <el-col :span="3">
-                        <el-form-item label="姓名:" label-width="100%">
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="3">                        
-                            <el-input v-model="infoForm.name"></el-input>                      
-                    </el-col>
-                    <el-col :span="2">
-                        <el-form-item label="性别:" label-width="100%">
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="4">
-                        <el-select v-model="infoForm.gender">
-                            <el-option label="男" value="男"></el-option>
-                            <el-option label="女" value="女"></el-option>
-                        </el-select>
-                    </el-col>
-                    <el-col :span="4">
-                        <el-form-item label="联系电话:" label-width="100%">
-                        </el-form-item>
-                    </el-col>
                     <el-col :span="8">
-                        <el-input v-model="infoForm.telephone"></el-input>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="3">
-                        <el-form-item label="证件类型:" label-width="100%">
+                        <el-form-item label="姓名:" label-width="40%">
+                            <el-input v-model="infoForm.name"></el-input>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="5">
-                        <el-select v-model="infoForm.gender">
-                            <el-option label="居民身份证" value="居民身份证"></el-option>
-                        </el-select>
-                    </el-col>
-                    <el-col :span="4">
-                        <el-form-item label="证件号码:" label-width="100%">
+                    <el-col :span="6" :offset="1">
+                        <el-form-item label="性别:" label-width="40%">
+                            <el-select v-model="infoForm.gender">
+                                <el-option label="男" value="男"></el-option>
+                                <el-option label="女" value="女"></el-option>
+                            </el-select>
                         </el-form-item>
                     </el-col>
-                    <el-col :span="12">
-                        <el-input v-model="infoForm.id"></el-input>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="4">
-                        <el-form-item label="证件生效日期:" label-width="100%">
+                    <el-col :span="8" :offset="1">
+                        <el-form-item label="联系电话:" label-width="40%">
+                            <el-input v-model="infoForm.telephone"></el-input>
                         </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-date-picker v-model="info.validDate" type="date" placeholder="选择日期">
-                        </el-date-picker> 
-                    </el-col>
-                    <el-col :span="4">
-                        <el-form-item label="证件失效日期" label-width="100%">
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-date-picker v-model="info.invalidDate" type="date" placeholder="选择日期">
-                        </el-date-picker> 
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="联系邮箱:" label-width="40%">
+                        <el-form-item label="证件类型:" label-width="30%">
+                            <el-select v-model="infoForm.gender">
+                                <el-option label="居民身份证" value="居民身份证"></el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="16">
+                        <el-form-item label="证件号码:" label-width="30%">
+                            <el-input v-model="infoForm.id"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="生效日期:" label-width="30%">
+                            <el-date-picker v-model="infoForm.validDate" type="date" placeholder="选择日期"></el-date-picker>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8" :offset="4">
+                        <el-form-item label="失效日期:" label-width="30%">
+                            <el-date-picker v-model="infoForm.invalidDate" type="date" placeholder="选择日期"></el-date-picker>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="联系邮箱:" label-width="30%">
                             <el-input v-model="infoForm.email"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="16">
-                        <el-form-item label="联系地址:" label-width="40%">
+                        <el-form-item label="联系地址:" label-width="30%">
                             <el-input v-model="infoForm.address"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="职业:" label-width="40%">
+                        <el-form-item label="职业:" label-width="30%">
                             <el-input v-model="infoForm.profession"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="16">
-                        <el-form-item label="工作单位:" label-width="40%">
+                        <el-form-item label="工作单位:" label-width="30%">
                             <el-input v-model="infoForm.company"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="学历:" label-width="40%">
+                        <el-form-item label="学历:" label-width="30%">
                             <el-select v-model="infoForm.education">
                                 <el-option v-for="item in education" :key="item.code" :label="item.name" :value="item.code"></el-option>
                             </el-select>
                         </el-form-item>
                     </el-col>
                     <el-col :span="16">
-                        <el-form-item label="营业网点:" label-width="40%">
+                        <el-form-item label="营业网点:" label-width="30%">
                             <el-select v-model="infoForm.organization">
                                 <el-option v-for="item in organization" :key="item.code" :label="item.name" :value="item.code"></el-option>
                             </el-select>
@@ -158,14 +142,14 @@
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="银行类型:" label-width="40%">
+                        <el-form-item label="银行类型:" label-width="30%">
                             <el-select v-model="infoForm.bankType">
                                 <el-option v-for="item in bankType" :key="item.code" :label="item.name" :value="item.code"></el-option>
                             </el-select>
                         </el-form-item>
                     </el-col>
                     <el-col :span="16">
-                        <el-form-item label="银行号码:" label-width="40%">
+                        <el-form-item label="银行号码:" label-width="30%">
                             <el-input v-model="infoForm.bankCode"></el-input>
                         </el-form-item>
                     </el-col>
@@ -304,7 +288,6 @@
 export default {
     data(){
         return{
-            value1:'',
             dialogImageUrl: '',
             dialogVisible: false,
             changePassword:false,

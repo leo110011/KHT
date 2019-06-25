@@ -80,108 +80,129 @@
   </div>
 
 <!--弹框-->
-  <el-dialog title="用户详情" :visible.sync="dialogFormVisible" :modal-append-to-body='false' append-to-body style="text-align: center">
+  <el-dialog style="text-align:center" title="用户详情" :visible.sync="dialogFormVisible" width="50%" :modal-append-to-body='false' append-to-body>
+      <el-form>
+          <el-row>
+              <el-col :span="10" >
+                  <el-form-item label="姓名:" label-width="40%">
+                    <el-input v-model="form.name" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+              <el-col :span="4" offset="1">
+                  <el-form-item label="性别:" label-width="40%">
+                    <el-input v-model="form.sexual" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+              <el-col :span="8" offset="1">
+                  <el-form-item label="联系电话:" label-width="40%">
+                    <el-input v-model="form.phonenumber" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+          </el-row>
 
-    <el-form ref="form" :model="form" label-width="80px">
-      <el-col span="12" :offset="6">
-      <el-form-item label="机构编号">
-        <span>{{ form.orgnizeID }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="机构名字">
-        <span>{{ form.orgnize_name }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="姓名">
-        <span>{{ form.name }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="性别">
-        <span>{{ form.sexual }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="证件类型">
-        <span>{{ form.passport_type }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="证件号码">
-        <span>{{ form.passportID }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="生效日期">
-        <span>{{ form.effect_data }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="失效日期">
-        <span>{{ form.unefeect_data }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="联系电话">
-        <span>{{ form.phonenumber }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="联系邮箱">
-        <span>{{ form.e_mail }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="联系地址">
-        <span>{{ form.address }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="工作单位">
-        <span>{{ form.work_station }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="职业">
-        <span>{{ form.vocation }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="学历">
-        <span>{{ form.education }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="投资类型">
-        <span>{{ form.invest_type }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="开户时间">
-        <span>{{ form.open_account_data }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="销户时间">
-        <span>{{ form.end_account_data }}</span>
-      </el-form-item>
-      </el-col>
-      <el-col span="12" :offset="6">
-      <el-form-item label="状态">
-        <span>{{ form.user_status }}</span>
-      </el-form-item>
-      </el-col>
-      <el-form-item label="">
-      </el-form-item>
-    </el-form>
+          <el-row>
+              <el-col :span="4">
+                  <el-form-item label="联系地址:" label-width="100%">
+                  </el-form-item>
+              </el-col>
+              <el-col :span="11">
+                      <el-input v-model="form.address" :readonly="true"></el-input>
+              </el-col>
+              <el-col :span="8" offset="1">
+                  <el-form-item label="联系邮箱:" label-width="40%">
+                      <el-input v-model="form.e_mail" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+          </el-row>
 
+          <el-row>
+              <el-col :span="10">
+                  <el-form-item label="证件类型:" label-width="40%">
+                    <el-input v-model="form.passport_type" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                  <el-form-item label="证件号码:" label-width="40%">
+                     <el-input v-model="form.passportID" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+          </el-row>
 
-    <div slot="footer" class="dialog-footer">
-      <el-button type="danger" @click="dialogFormVisible = false">不通过 </el-button>
-      <el-button type="primary" @click="dialogFormVisible = false">通 过</el-button>
-    </div>
+          <el-row>
+              <el-col :span="10">
+                  <el-form-item label="机构编号:" label-width="40%">
+                    <el-input v-model="form.orgnizeID" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                  <el-form-item label="机构名称:" label-width="40%">
+                     <el-input v-model="form.orgnize_name" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+          </el-row>
+
+          <el-row>
+              <el-col :span="10">
+                  <el-form-item label="生效日期:" label-width="40%">
+                     <el-input v-model="form.effect_data" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                  <el-form-item label="失效日期:" label-width="40%">
+                     <el-input v-model="form.unefeect_data" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+          </el-row>
+
+          <el-row>
+              <el-col :span="10">
+                  <el-form-item label="职业:" label-width="40%">
+                      <el-input v-model="form.vocation" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                  <el-form-item label="工作单位:" label-width="40%">
+                      <el-input v-model="form.work_station" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+          </el-row>
+
+          <el-row>
+              <el-col :span="10">
+                  <el-form-item label="学历:" label-width="40%">
+                      <el-input v-model="form.education" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                  <el-form-item label="投资者类型:" label-width="40%">
+                      <el-input v-model="form.invest_type" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+          </el-row>
+          <el-row>
+              <el-col :span="10">
+                  <el-form-item label="开户时间:" label-width="40%">
+                      <el-input v-model="form.open_account_data" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                  <el-form-item label="销户时间:" label-width="40%">
+                      <el-input v-model="form.end_account_data" :readonly="true"></el-input>
+                  </el-form-item>
+              </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="10">
+              <el-form-item label="用户状态:" label-width="40%">
+                  <el-input v-model="form.user_status" :readonly="true"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="danger" @click="dialogFormVisible = false">不通过 </el-button>
+        <el-button type="primary" @click="dialogFormVisible = false">通 过</el-button>
+      </div>
   </el-dialog>
 </div>
 </template>
